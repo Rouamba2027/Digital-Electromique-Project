@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - DIGITAL ELECTRONIQUE</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-laptop-code"></i>
+                <span>DIGITAL <span class="logo-highlight">ELECTRONIQUE</span></span>
+            </div>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#" onclick="window.location.href='index.html'; return false"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="#" onclick="window.location.href='services.html'; return false"><i class="fas fa-cogs"></i> Services</a></li>
+                    <li><a href="#" onclick="window.location.href='produits.html'; return false"><i class="fas fa-boxes"></i> Produits</a></li>
+                    <li><a href="#" onclick="window.location.href='apropos.html'; return false"><i class="fas fa-info-circle"></i> À propos</a></li>
+                    <li><a href="#" onclick="window.location.href='contact.html'; return false"><i class="fas fa-phone"></i> Contact</a></li>
+                    <li><a href="#" onclick="window.open('admin.html', '_blank'); return false"><i class="fas fa-chart-line"></i> Admin</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="btn btn-whatsapp" id="whatsappBtn">
+                    <i class="fab fa-whatsapp"></i> Commander
+                </button>
+                <button class="btn btn-outline" id="cartBtn">
+                    <i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- BANNIERE CONTACT -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>Contactez-nous</h1>
+            <p>Nous sommes à votre écoute 7j/7</p>
+        </div>
+    </section>
+
+    <!-- SECTION CONTACT -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact</h2>
+                <p class="section-subtitle">Venez nous voir ou contactez-nous</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-details">
+                            <h4>Adresse</h4>
+                            <p>Quartier Centre, Koudougou</p>
+                            <p>Burkina Faso</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div class="contact-details">
+                            <h4>Téléphone</h4>
+                            <p>+226 67 91 67 52</p>
+                            <p>+226 78 45 23 12</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>contact@digitalelectronique.bf</p>
+                            <p>firminjoyameogo74@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="contact.html" class="btn btn-primary">Nous contacter <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Envoyez-nous un message</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <input type="text" name="nom" placeholder="Votre nom" required>
+                            <input type="text" name="prenom" placeholder="Votre prénom" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <input type="email" name="email" placeholder="Votre email" required>
+                            <input type="tel" name="telephone" placeholder="Votre téléphone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select name="sujet" required>
+                                <option value="">Sujet du message</option>
+                                <option value="achat">Demande d'achat</option>
+                                <option value="info">Information</option>
+                                <option value="reparation">Réparation</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Votre message..." rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-paper-plane"></i> Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-laptop-code"></i>
+                        <span>DIGITAL <span class="logo-highlight">ELECTRONIQUE</span></span>
+                    </div>
+                    <p>Votre boutique d'électronique de confiance à Koudougou.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Liens rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="produits.html"><i class="fas fa-chevron-right"></i> Produits</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Vente smartphones</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Vente ordinateurs</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Pièces détachées</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Maintenance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Paiement</h4>
+                    <div class="payment-methods">
+                        <div class="payment-method"><i class="fas fa-money-bill-wave"></i><span>Espèces</span></div>
+                        <div class="payment-method"><i class="fab fa-orange"></i><span>Orange Money</span></div>
+                        <div class="payment-method"><i class="fas fa-mobile-alt"></i><span>Moov Money</span></div>
+                        <div class="payment-method"><i class="fas fa-university"></i><span>Wave</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2018-<span id="currentYear"></span> DIGITAL ELECTRONIQUE. Tous droits réservés.</p>
+                </div>
+                <div class="legal-links">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Confidentialité</a>
+                    <a href="#">CGV</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlI5r5cNnXeIqjJ1kHlOqoK7f8vBqLmN0&callback=initMap" async defer></script>
+    
+    <!-- SOLUTION GARANTIE POUR LE FORMULAIRE DE CONTACT -->
+    <script>
+        // SOLUTION DIRECTE POUR LE FORMULAIRE DE CONTACT
+        (function() {
+            console.log("🔵 Script direct contact.html exécuté");
+            
+            // Attendre que le DOM soit complètement chargé
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log("🔵 DOM chargé, recherche du formulaire...");
+                
+                const contactForm = document.getElementById('contactForm');
+                console.log("🔵 Formulaire trouvé:", contactForm);
+                
+                if (contactForm) {
+                    console.log("✅ Formulaire trouvé, installation du gestionnaire...");
+                    
+                    // Supprimer tous les anciens événements en clonant le formulaire
+                    const newForm = contactForm.cloneNode(true);
+                    contactForm.parentNode.replaceChild(newForm, contactForm);
+                    
+                    // Ajouter l'événement de soumission
+                    newForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        console.log("✅ Formulaire soumis avec succès !");
+                        
+                        // Récupérer les valeurs du formulaire
+                        const formData = new FormData(newForm);
+                        const messageData = {
+                            nom: formData.get('nom') || '',
+                            prenom: formData.get('prenom') || '',
+                            email: formData.get('email') || '',
+                            telephone: formData.get('telephone') || '',
+                            sujet: formData.get('sujet') || '',
+                            message: formData.get('message') || ''
+                        };
+                        
+                        console.log("📝 Données récupérées:", messageData);
+                        
+                        // Sauvegarder dans localStorage
+                        try {
+                            // Récupérer les messages existants
+                            let messages = JSON.parse(localStorage.getItem('digital_messages') || '[]');
+                            
+                            // Ajouter le nouveau message
+                            messages.unshift({
+                                id: Date.now(),
+                                date: new Date().toLocaleString('fr-FR'),
+                                ...messageData,
+                                lu: false
+                            });
+                            
+                            // Sauvegarder
+                            localStorage.setItem('digital_messages', JSON.stringify(messages));
+                            
+                            console.log("💾 Message sauvegardé, total:", messages.length);
+                            console.log("📋 Messages dans localStorage:", messages);
+                            
+                            // Afficher une notification
+                            alert('✅ Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.');
+                            
+                            // Réinitialiser le formulaire
+                            newForm.reset();
+                            
+                            // Optionnel : proposer d'aller voir l'admin
+                            if (confirm('Voulez-vous voir la page d\'administration ?')) {
+                                window.open('admin.html', '_blank');
+                            }
+                            
+                        } catch (error) {
+                            console.error("❌ Erreur lors de la sauvegarde:", error);
+                            alert('❌ Erreur lors de l\'envoi du message. Veuillez réessayer.');
+                        }
+                    });
+                    
+                    console.log("🎉 Gestionnaire de formulaire installé avec succès !");
+                } else {
+                    console.log("❌ ERREUR: Formulaire non trouvé !");
+                    console.log("🔍 Recherche d'autres formulaires:", document.forms);
+                }
+            });
+        })();
+    </script>
+    
+    <!-- Test supplémentaire pour vérifier que tout fonctionne -->
+    <script>
+        // Test rapide
+        console.log("🔧 Test: localStorage disponible ?", typeof localStorage !== 'undefined');
+    </script>
+    
+    <style>
+        .page-banner {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0 60px;
+            margin-top: var(--header-height);
+            text-align: center;
+        }
+        .contact-section {
+            padding-top: 40px;
+        }
+    </style>
+</body>
+</html>

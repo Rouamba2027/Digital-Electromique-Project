@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - DIGITAL ELECTRONIQUE</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        /* ===== CONTAINER ===== */
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* ===== HEADER ===== */
+        .admin-header {
+            background: linear-gradient(135deg, #4361ee, #3f37c9);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .admin-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: float 20s linear infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-20px, -20px) rotate(360deg); }
+        }
+        
+        .admin-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .admin-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* ===== STATISTIQUES ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border-color: #4361ee;
+        }
+        
+        .stat-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #4361ee, #3f37c9);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .stat-content {
+            flex: 1;
+        }
+        
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #333;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* ===== CONTENU PRINCIPAL ===== */
+        .admin-content {
+            padding: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin: 40px 0 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #4361ee;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section-title i {
+            color: #4361ee;
+        }
+        
+        /* ===== TABLES ===== */
+        .data-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e9ecef;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .data-table thead {
+            background: linear-gradient(135deg, #4361ee, #3f37c9);
+        }
+        
+        .data-table th {
+            color: white;
+            font-weight: 600;
+            padding: 18px 15px;
+            text-align: left;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .data-table tbody tr {
+            transition: all 0.2s ease;
+        }
+        
+        .data-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .data-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: middle;
+        }
+        
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* ===== BOUTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #4361ee, #3f37c9);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #3a56d4, #3730a3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: linear-gradient(135deg, #0da271, #047857);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+        }
+        
+        .btn-warning:hover {
+            background: linear-gradient(135deg, #d97706, #b45309);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
+        }
+        
+        .btn-info {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+        }
+        
+        .btn-info:hover {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+        }
+        
+        .btn-icon {
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            border-radius: 50%;
+        }
+        
+        /* ===== ACTIONS ===== */
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 40px 0;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+        
+        .table-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        /* ===== MESSAGES VIDES ===== */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+        
+        .empty-state i {
+            font-size: 4rem;
+            color: #ccc;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        .empty-state p {
+            font-size: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalSlide 0.3s ease;
+        }
+        
+        @keyframes modalSlide {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, #4361ee, #3f37c9);
+            color: white;
+            padding: 25px;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h2 {
+            font-size: 1.5rem;
+        }
+        
+        .close-modal {
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: #4cc9f0;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        /* ===== FORMULAIRES ===== */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #4361ee;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+        
+        .info-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4361ee;
+        }
+        
+        .info-box p {
+            margin: 8px 0;
+        }
+        
+        .info-box strong {
+            color: #4361ee;
+        }
+        
+        .method-selector {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .method-card {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .method-card:hover {
+            border-color: #4361ee;
+            background: #f8f9fa;
+            transform: translateY(-3px);
+        }
+        
+        .method-card.selected {
+            border-color: #4361ee;
+            background: #e8f0fe;
+        }
+        
+        .method-card i {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .method-card.email i { color: #ea4335; }
+        .method-card.whatsapp i { color: #25d366; }
+        .method-card.sms i { color: #3b82f6; }
+        .method-card.call i { color: #10b981; }
+        
+        .method-card span {
+            font-weight: 600;
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        /* ===== NOTIFICATIONS ===== */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 2000;
+            animation: slideInRight 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .notification.error {
+            background: #ef4444;
+        }
+        
+        .notification.warning {
+            background: #f59e0b;
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        /* ===== RÉPONSES HISTORIQUE ===== */
+        .replies-list {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .reply-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 3px solid #4361ee;
+        }
+        
+        .reply-item small {
+            color: #666;
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .method-selector {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .admin-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .data-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .modal-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- En-tête -->
+        <div class="admin-header">
+            <h1><i class="fas fa-chart-line"></i> Tableau de Bord</h1>
+            <p>DIGITAL ELECTRONIQUE - Administration des commandes et messages</p>
+        </div>
+        
+        <!-- Statistiques -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-shopping-cart"></i></div>
+                <div class="stat-content">
+                    <div class="stat-number" id="totalOrders">0</div>
+                    <div class="stat-label">Commandes totales</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-envelope"></i></div>
+                <div class="stat-content">
+                    <div class="stat-number" id="totalMessages">0</div>
+                    <div class="stat-label">Messages clients</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-content">
+                    <div class="stat-number" id="totalCustomers">0</div>
+                    <div class="stat-label">Clients uniques</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-money-bill-wave"></i></div>
+                <div class="stat-content">
+                    <div class="stat-number" id="totalRevenue">0 FCFA</div>
+                    <div class="stat-label">Chiffre d'affaires</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contenu principal -->
+        <div class="admin-content">
+            <!-- Section Commandes -->
+            <div class="data-section">
+                <h2 class="section-title"><i class="fas fa-shopping-cart"></i> Dernières Commandes</h2>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Client</th>
+                            <th>Produit</th>
+                            <th>Téléphone</th>
+                            <th>Paiement</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTable"></tbody>
+                </table>
+                
+                <div id="emptyOrders" class="empty-state" style="display: none;">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Aucune commande</h3>
+                    <p>Les commandes apparaîtront ici lorsqu'elles seront passées sur le site.</p>
+                </div>
+            </div>
+            
+            <!-- Section Messages -->
+            <div class="data-section">
+                <h2 class="section-title"><i class="fas fa-envelope"></i> Messages Clients</h2>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Téléphone</th>
+                            <th>Sujet</th>
+                            <th>Message</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="messagesTable"></tbody>
+                </table>
+                
+                <div id="emptyMessages" class="empty-state" style="display: none;">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Aucun message</h3>
+                    <p>Les messages apparaîtront ici lorsque les clients utiliseront le formulaire de contact.</p>
+                </div>
+            </div>
+            
+            <!-- Historique des réponses -->
+            <div class="data-section" id="repliesSection" style="display: none;">
+                <h2 class="section-title"><i class="fas fa-history"></i> Historique des Réponses</h2>
+                <div id="repliesList" class="replies-list"></div>
+            </div>
+            
+            <!-- Actions principales -->
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="refreshData()">
+                    <i class="fas fa-sync-alt"></i> Rafraîchir
+                </button>
+                <button class="btn btn-success" onclick="exportData()">
+                    <i class="fas fa-download"></i> Exporter
+                </button>
+                <button class="btn btn-warning" onclick="importData()">
+                    <i class="fas fa-upload"></i> Importer
+                </button>
+                <button class="btn btn-danger" onclick="clearData()">
+                    <i class="fas fa-trash-alt"></i> Effacer tout
+                </button>
+                <a href="index.html" class="btn" style="background: #6c757d; color: white;">
+                    <i class="fas fa-store"></i> Site
+                </a>
+                <a href="https://web.whatsapp.com" target="_blank" class="btn btn-success">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://mail.google.com" target="_blank" class="btn btn-info">
+                    <i class="fas fa-envelope"></i> Gmail
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE RÉPONSE (SOLUTION 3 COMPLÈTE) -->
+    <div class="modal" id="replyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-reply"></i> Répondre au message</h2>
+                <span class="close-modal" onclick="closeReplyModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <!-- Informations du message original -->
+                <div class="info-box" id="originalMessageInfo">
+                    <!-- Rempli par JavaScript -->
+                </div>
+                
+                <!-- Sélection de la méthode de réponse -->
+                <h3 style="margin-bottom: 15px;">Choisissez la méthode de réponse :</h3>
+                
+                <div class="method-selector">
+                    <div class="method-card email" onclick="selectMethod('email')" id="methodEmail">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </div>
+                    <div class="method-card whatsapp" onclick="selectMethod('whatsapp')" id="methodWhatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </div>
+                    <div class="method-card sms" onclick="selectMethod('sms')" id="methodSms">
+                        <i class="fas fa-comment"></i>
+                        <span>SMS</span>
+                    </div>
+                    <div class="method-card call" onclick="selectMethod('call')" id="methodCall">
+                        <i class="fas fa-phone"></i>
+                        <span>Appel</span>
+                    </div>
+                </div>
+                
+                <!-- Formulaire de réponse -->
+                <form id="replyForm" onsubmit="sendReply(event)">
+                    <div class="form-group">
+                        <label for="replyTo">Destinataire :</label>
+                        <input type="text" id="replyTo" readonly style="background: #f8f9fa;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="replySubject">Sujet :</label>
+                        <input type="text" id="replySubject" value="Re: Votre message - DIGITAL ELECTRONIQUE">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="replyMessage">Votre message :</label>
+                        <textarea id="replyMessage" rows="6" placeholder="Écrivez votre réponse ici...">Bonjour,
+
+Merci pour votre message concernant DIGITAL ELECTRONIQUE.
+
+Je vous recontacte pour répondre à votre demande.
+
+Cordialement,
+L'équipe DIGITAL ELECTRONIQUE
+Tél: +226 67 91 67 52</textarea>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button type="submit" class="btn btn-primary" style="flex: 2;">
+                            <i class="fas fa-paper-plane"></i> Envoyer la réponse
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="closeReplyModal()" style="flex: 1; background: #6c757d; color: white;">
+                            Annuler
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL D'IMPORTATION -->
+    <div class="modal" id="importModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Importer des données</h2>
+                <span class="close-modal" onclick="closeImportModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <textarea id="importData" placeholder="Collez ici les données JSON exportées..." rows="10" style="width: 100%; padding: 15px; border: 2px solid #e9ecef; border-radius: 8px;"></textarea>
+                <div style="display: flex; gap: 15px; margin-top: 20px;">
+                    <button class="btn btn-primary" onclick="confirmImport()">
+                        <i class="fas fa-check"></i> Confirmer
+                    </button>
+                    <button class="btn btn-secondary" onclick="closeImportModal()" style="background: #6c757d; color: white;">
+                        Annuler
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== VARIABLES GLOBALES =====
+        let orders = [];
+        let messages = [];
+        let replies = [];
+        let currentReplyData = null;
+        let selectedMethod = 'email';
+
+        // ===== INITIALISATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📊 Admin panel initialisé avec Solution 3');
+            loadData();
+            
+            // Rafraîchir automatiquement toutes les 30 secondes
+            setInterval(loadData, 30000);
+            
+            // Fermer les modals en cliquant à l'extérieur
+            window.addEventListener('click', function(e) {
+                if (e.target.classList.contains('modal')) {
+                    closeReplyModal();
+                    closeImportModal();
+                }
+            });
+        });
+
+        // ===== CHARGEMENT DES DONNÉES =====
+        function loadData() {
+            // Charger les commandes
+            orders = JSON.parse(localStorage.getItem('digital_orders') || '[]');
+            
+            // Charger les messages
+            messages = JSON.parse(localStorage.getItem('digital_messages') || '[]');
+            
+            // Charger l'historique des réponses
+            replies = JSON.parse(localStorage.getItem('digital_replies') || '[]');
+            
+            console.log(`📦 ${orders.length} commandes`);
+            console.log(`📧 ${messages.length} messages`);
+            console.log(`📝 ${replies.length} réponses`);
+            
+            updateStats();
+            updateTables();
+            updateRepliesHistory();
+        }
+
+        // ===== STATISTIQUES =====
+        function updateStats() {
+            document.getElementById('totalOrders').textContent = orders.length;
+            document.getElementById('totalMessages').textContent = messages.length;
+            
+            const uniqueCustomers = [...new Set(orders.map(o => o.telephone))];
+            document.getElementById('totalCustomers').textContent = uniqueCustomers.length;
+            
+            const revenue = orders.reduce((total, order) => {
+                const match = order.produit?.match(/(\d[\d\s.]*)FCFA/);
+                return total + (match ? parseFloat(match[1].replace(/\s/g, '')) : 0);
+            }, 0);
+            
+            document.getElementById('totalRevenue').textContent = 
+                new Intl.NumberFormat('fr-FR').format(revenue) + ' FCFA';
+        }
+
+        // ===== TABLES =====
+        function updateTables() {
+            updateOrdersTable();
+            updateMessagesTable();
+        }
+
+        function updateOrdersTable() {
+            const tbody = document.getElementById('ordersTable');
+            const emptyState = document.getElementById('emptyOrders');
+            
+            if (orders.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            
+            const sortedOrders = [...orders].sort((a, b) => 
+                new Date(b.date || 0) - new Date(a.date || 0)
+            );
+            
+            tbody.innerHTML = sortedOrders.map((order, index) => `
+                <tr>
+                    <td>${formatDate(order.date)}</td>
+                    <td><strong>${order.prenom || ''} ${order.nom || ''}</strong></td>
+                    <td>${order.produit || 'Non spécifié'}</td>
+                    <td>${order.telephone || 'Non renseigné'}</td>
+                    <td>${order.paiement || 'Non spécifié'}</td>
+                    <td>
+                        <button class="btn btn-primary btn-small btn-icon" onclick="viewOrder(${index})" title="Voir">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-success btn-small btn-icon" onclick="quickContact('${order.telephone}', '${order.prenom}')" title="Contacter">
+                            <i class="fas fa-phone"></i>
+                        </button>
+                        <button class="btn btn-danger btn-small btn-icon" onclick="deleteOrder(${index})" title="Supprimer">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function updateMessagesTable() {
+            const tbody = document.getElementById('messagesTable');
+            const emptyState = document.getElementById('emptyMessages');
+            
+            if (messages.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.style.display = 'block';
+                document.getElementById('repliesSection').style.display = 'none';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            document.getElementById('repliesSection').style.display = 'block';
+            
+            const sortedMessages = [...messages].sort((a, b) => 
+                new Date(b.date || 0) - new Date(a.date || 0)
+            );
+            
+            tbody.innerHTML = sortedMessages.map((msg, index) => `
+                <tr>
+                    <td>${formatDate(msg.date)}</td>
+                    <td><strong>${msg.nom || ''} ${msg.prenom || ''}</strong></td>
+                    <td>${msg.email || 'Non renseigné'}</td>
+                    <td>${msg.telephone || 'Non renseigné'}</td>
+                    <td>${msg.sujet || 'Sans sujet'}</td>
+                    <td>${(msg.message || '').substring(0, 30)}...</td>
+                    <td>
+                        <button class="btn btn-primary btn-small btn-icon" onclick="viewMessage(${index})" title="Voir">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-success btn-small btn-icon" onclick="openReplyModal(${index})" title="Répondre">
+                            <i class="fas fa-reply"></i>
+                        </button>
+                        <button class="btn btn-danger btn-small btn-icon" onclick="deleteMessage(${index})" title="Supprimer">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // ===== FONCTIONS DE RÉPONSE (SOLUTION 3) =====
+        
+        function openReplyModal(index) {
+            const msg = messages[index];
+            currentReplyData = { ...msg, index };
+            
+            // Afficher les informations du message original
+            const infoBox = document.getElementById('originalMessageInfo');
+            infoBox.innerHTML = `
+                <p><strong>De :</strong> ${msg.prenom || ''} ${msg.nom || ''}</p>
+                <p><strong>Email :</strong> ${msg.email || '❌ Non renseigné'}</p>
+                <p><strong>Téléphone :</strong> ${msg.telephone || '❌ Non renseigné'}</p>
+                <p><strong>Sujet :</strong> ${msg.sujet || 'Sans sujet'}</p>
+                <p><strong>Message original :</strong> "${msg.message || ''}"</p>
+                <p><strong>Date :</strong> ${formatDate(msg.date)}</p>
+            `;
+            
+            // Réinitialiser la méthode sélectionnée
+            selectedMethod = 'email';
+            updateMethodSelection();
+            
+            // Mettre à jour le champ destinataire
+            updateReplyTo();
+            
+            document.getElementById('replyModal').style.display = 'flex';
+        }
+
+        function selectMethod(method) {
+            selectedMethod = method;
+            updateMethodSelection();
+            updateReplyTo();
+        }
+
+        function updateMethodSelection() {
+            const methods = ['email', 'whatsapp', 'sms', 'call'];
+            methods.forEach(m => {
+                const el = document.getElementById(`method${m.charAt(0).toUpperCase() + m.slice(1)}`);
+                if (el) {
+                    if (m === selectedMethod) {
+                        el.classList.add('selected');
+                    } else {
+                        el.classList.remove('selected');
+                    }
+                }
+            });
+        }
+
+        function updateReplyTo() {
+            if (!currentReplyData) return;
+            
+            const replyToField = document.getElementById('replyTo');
+            let value = '';
+            
+            switch(selectedMethod) {
+                case 'email':
+                    value = currentReplyData.email || '❌ Non disponible';
+                    break;
+                case 'whatsapp':
+                case 'sms':
+                case 'call':
+                    value = currentReplyData.telephone || '❌ Non disponible';
+                    break;
+            }
+            
+            replyToField.value = value;
+            
+            // Adapter le sujet selon la méthode
+            const subjectField = document.getElementById('replySubject');
+            if (selectedMethod === 'email') {
+                subjectField.value = 'Re: Votre message - DIGITAL ELECTRONIQUE';
+            } else {
+                subjectField.value = 'Message - DIGITAL ELECTRONIQUE';
+            }
+        }
+
+        function sendReply(event) {
+            event.preventDefault();
+            
+            if (!currentReplyData) {
+                showNotification('❌ Erreur : aucune donnée de message', 'error');
+                return;
+            }
+            
+            const message = document.getElementById('replyMessage').value;
+            const subject = document.getElementById('replySubject').value;
+            
+            if (!message.trim()) {
+                showNotification('❌ Veuillez écrire un message', 'error');
+                return;
+            }
+            
+            const { email, telephone, prenom, nom } = currentReplyData;
+            const fullName = `${prenom || ''} ${nom || ''}`.trim() || 'Client';
+            
+            // Traitement selon la méthode choisie
+            let success = false;
+            
+            switch(selectedMethod) {
+                case 'email':
+                    if (email && email.includes('@')) {
+                        const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+                        window.location.href = mailtoLink;
+                        success = true;
+                        showNotification(`✅ Email préparé pour ${email}`);
+                    } else {
+                        showNotification('❌ Adresse email non disponible', 'error');
+                    }
+                    break;
+                    
+                case 'whatsapp':
+                    if (telephone) {
+                        let cleanPhone = telephone.replace(/\s/g, '').replace(/\+/g, '').replace(/-/g, '');
+                        if (!cleanPhone.startsWith('226') && cleanPhone.length === 8) {
+                            cleanPhone = '226' + cleanPhone;
+                        }
+                        const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+                        window.open(whatsappUrl, '_blank');
+                        success = true;
+                        showNotification(`✅ WhatsApp ouvert pour ${telephone}`);
+                    } else {
+                        showNotification('❌ Numéro WhatsApp non disponible', 'error');
+                    }
+                    break;
+                    
+                case 'sms':
+                    if (telephone) {
+                        window.location.href = `sms:${telephone}?body=${encodeURIComponent(message)}`;
+                        success = true;
+                        showNotification(`✅ SMS préparé pour ${telephone}`);
+                    } else {
+                        showNotification('❌ Numéro SMS non disponible', 'error');
+                    }
+                    break;
+                    
+                case 'call':
+                    if (telephone) {
+                        if (confirm(`Appeler le ${telephone} ?`)) {
+                            window.location.href = `tel:${telephone}`;
+                            success = true;
+                        }
+                    } else {
+                        showNotification('❌ Numéro de téléphone non disponible', 'error');
+                    }
+                    break;
+            }
+            
+            if (success) {
+                // Sauvegarder la réponse dans l'historique
+                saveReplyToHistory();
+                
+                // Fermer le modal après 1 seconde
+                setTimeout(() => {
+                    closeReplyModal();
+                }, 1000);
+            }
+        }
+
+        function saveReplyToHistory() {
+            const reply = {
+                to: currentReplyData.email || currentReplyData.telephone,
+                method: selectedMethod,
+                message: document.getElementById('replyMessage').value,
+                subject: document.getElementById('replySubject').value,
+                originalMessage: currentReplyData.message,
+                clientName: `${currentReplyData.prenom || ''} ${currentReplyData.nom || ''}`.trim(),
+                date: new Date().toLocaleString('fr-FR'),
+                status: 'envoyé'
+            };
+            
+            replies.push(reply);
+            localStorage.setItem('digital_replies', JSON.stringify(replies));
+            updateRepliesHistory();
+        }
+
+        function updateRepliesHistory() {
+            const repliesList = document.getElementById('repliesList');
+            
+            if (replies.length === 0) {
+                repliesList.innerHTML = '<p style="text-align: center; color: #666;">Aucune réponse enregistrée</p>';
+                return;
+            }
+            
+            const sortedReplies = [...replies].reverse().slice(0, 10); // 10 dernières réponses
+            
+            repliesList.innerHTML = sortedReplies.map(reply => `
+                <div class="reply-item">
+                    <div style="display: flex; justify-content: space-between;">
+                        <strong>À: ${reply.to}</strong>
+                        <small>${reply.date}</small>
+                    </div>
+                    <p style="margin-top: 5px;">📝 ${reply.message.substring(0, 50)}${reply.message.length > 50 ? '...' : ''}</p>
+                    <small>Méthode: ${reply.method} | Client: ${reply.clientName || 'Inconnu'}</small>
+                </div>
+            `).join('');
+        }
+
+        function closeReplyModal() {
+            document.getElementById('replyModal').style.display = 'none';
+            currentReplyData = null;
+            document.getElementById('replyForm').reset();
+        }
+
+        // ===== AUTRES FONCTIONS =====
+        
+        function viewOrder(index) {
+            const order = orders[index];
+            alert(JSON.stringify(order, null, 2));
+        }
+
+        function viewMessage(index) {
+            const msg = messages[index];
+            alert(`Message de ${msg.prenom || ''} ${msg.nom || ''}\n\n` +
+                  `Email: ${msg.email || 'Non renseigné'}\n` +
+                  `Téléphone: ${msg.telephone || 'Non renseigné'}\n` +
+                  `Sujet: ${msg.sujet || 'Sans sujet'}\n\n` +
+                  `Message:\n${msg.message}`);
+        }
+
+        function quickContact(phone, name) {
+            if (!phone) {
+                showNotification('❌ Numéro non disponible', 'error');
+                return;
+            }
+            
+            if (confirm(`Contacter ${name || 'le client'} au ${phone} ?\n\nOK = WhatsApp\nAnnuler = Appel`)) {
+                let cleanPhone = phone.replace(/\s/g, '').replace(/\+/g, '');
+                if (!cleanPhone.startsWith('226') && cleanPhone.length === 8) {
+                    cleanPhone = '226' + cleanPhone;
+                }
+                window.open(`https://wa.me/${cleanPhone}`, '_blank');
+            } else {
+                window.location.href = `tel:${phone}`;
+            }
+        }
+
+        function deleteOrder(index) {
+            if (confirm('Supprimer cette commande ?')) {
+                orders.splice(index, 1);
+                localStorage.setItem('digital_orders', JSON.stringify(orders));
+                loadData();
+                showNotification('✅ Commande supprimée');
+            }
+        }
+
+        function deleteMessage(index) {
+            if (confirm('Supprimer ce message ?')) {
+                messages.splice(index, 1);
+                localStorage.setItem('digital_messages', JSON.stringify(messages));
+                loadData();
+                showNotification('✅ Message supprimé');
+            }
+        }
+
+        function refreshData() {
+            loadData();
+            showNotification('✅ Données rafraîchies');
+        }
+
+        function exportData() {
+            const data = {
+                orders,
+                messages,
+                replies,
+                exportedAt: new Date().toISOString()
+            };
+            
+            const dataStr = JSON.stringify(data, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `digital-electronique-backup-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showNotification('✅ Données exportées');
+        }
+
+        function importData() {
+            document.getElementById('importModal').style.display = 'flex';
+        }
+
+        function closeImportModal() {
+            document.getElementById('importModal').style.display = 'none';
+            document.getElementById('importData').value = '';
+        }
+
+        function confirmImport() {
+            try {
+                const jsonData = document.getElementById('importData').value;
+                const data = JSON.parse(jsonData);
+                
+                if (data.orders) {
+                    localStorage.setItem('digital_orders', JSON.stringify(data.orders));
+                }
+                if (data.messages) {
+                    localStorage.setItem('digital_messages', JSON.stringify(data.messages));
+                }
+                if (data.replies) {
+                    localStorage.setItem('digital_replies', JSON.stringify(data.replies));
+                }
+                
+                loadData();
+                closeImportModal();
+                showNotification('✅ Données importées avec succès');
+            } catch (error) {
+                showNotification('❌ Erreur : données invalides', 'error');
+            }
+        }
+
+        function clearData() {
+            if (confirm('⚠️ ATTENTION ! Cette action est irréversible.\n\nVoulez-vous vraiment effacer TOUTES les données ?')) {
+                localStorage.removeItem('digital_orders');
+                localStorage.removeItem('digital_messages');
+                localStorage.removeItem('digital_replies');
+                loadData();
+                showNotification('✅ Toutes les données ont été effacées');
+            }
+        }
+
+        // ===== FONCTIONS UTILITAIRES =====
+        
+        function formatDate(dateString) {
+            if (!dateString) return 'Date inconnue';
+            try {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('fr-FR') + ' ' + date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+            } catch {
+                return dateString;
+            }
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideInRight 0.3s reverse';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

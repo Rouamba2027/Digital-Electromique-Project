@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITAL ELECTRONIQUE - Vente de Téléphones, Ordinateurs à Koudougou</title>
+    
+    <!-- SEO -->
+    <meta name="description" content="Boutique d'électronique à Koudougou : smartphones, ordinateurs, pièces détachées. Produits garantis, meilleurs prix, service professionnel.">
+    <meta name="keywords" content="téléphones Koudougou, smartphones Burkina, ordinateurs Koudougou, réparation téléphone">
+    <meta name="author" content="DIGITAL ELECTRONIQUE">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlI5r5cNnXeIqjJ1kHlOqoK7f8vBqLmN0&callback=initMap" async defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-laptop-code"></i>
+                <span>DIGITAL <span class="logo-highlight">ELECTRONIQUE</span></span>
+            </div>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#" onclick="window.location.href='index.html'; return false"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="#" onclick="window.location.href='services.html'; return false"><i class="fas fa-cogs"></i> Services</a></li>
+                    <li><a href="#" onclick="window.location.href='produits.html'; return false"><i class="fas fa-boxes"></i> Produits</a></li>
+                    <li><a href="#" onclick="window.location.href='apropos.html'; return false"><i class="fas fa-info-circle"></i> À propos</a></li>
+                    <li><a href="#" onclick="window.location.href='contact.html'; return false"><i class="fas fa-phone"></i> Contact</a></li>
+                    <li><a href="#" onclick="window.open('admin.html', '_blank'); return false"><i class="fas fa-chart-line"></i> Admin</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="btn btn-whatsapp" id="whatsappBtn">
+                    <i class="fab fa-whatsapp"></i> Commander
+                </button>
+                <button class="btn btn-outline" id="cartBtn">
+                    <i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="accueil">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Votre Boutique d'Électronique à Koudougou</h1>
+                <p class="hero-subtitle">Smartphones, ordinateurs, pièces détachées et services de réparation. Qualité garantie, prix imbattables.</p>
+                
+                <div class="hero-features">
+                    <div class="feature"><i class="fas fa-shield-alt"></i><span>Garantie 1 an</span></div>
+                    <div class="feature"><i class="fas fa-shipping-fast"></i><span>Livraison rapide</span></div>
+                    <div class="feature"><i class="fas fa-headset"></i><span>Support 7j/7</span></div>
+                    <div class="feature"><i class="fas fa-tags"></i><span>Meilleurs prix</span></div>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" id="globalSearch" placeholder="Rechercher un produit...">
+                    <button onclick="searchProducts()"><i class="fas fa-search"></i> Rechercher</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="categories-section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Services</h2>
+                <p class="section-subtitle">Des solutions complètes pour tous vos besoins</p>
+            </div>
+            <div class="categories">
+                <div class="category-card">
+                    <a href="services.html" style="text-decoration: none; color: inherit;">
+                        <div class="category-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h3>Vente de téléphones</h3>
+                        <p>Smartphones neufs et reconditionnés</p>
+                    </a>
+                </div>
+                <div class="category-card">
+                    <a href="services.html" style="text-decoration: none; color: inherit;">
+                        <div class="category-icon"><i class="fas fa-laptop"></i></div>
+                        <h3>Vente d'ordinateurs</h3>
+                        <p>PC portables et de bureau</p>
+                    </a>
+                </div>
+                <div class="category-card">
+                    <a href="services.html" style="text-decoration: none; color: inherit;">
+                        <div class="category-icon"><i class="fas fa-microchip"></i></div>
+                        <h3>Pièces détachées</h3>
+                        <p>RAM, disques durs, batteries</p>
+                    </a>
+                </div>
+                <div class="category-card">
+                    <a href="services.html" style="text-decoration: none; color: inherit;">
+                        <div class="category-icon"><i class="fas fa-film"></i></div>
+                        <h3>Chargement multimédia</h3>
+                        <p>Films, musique, logiciels</p>
+                    </a>
+                </div>
+                <div class="category-card">
+                    <a href="services.html" style="text-decoration: none; color: inherit;">
+                        <div class="category-icon"><i class="fas fa-shield-virus"></i></div>
+                        <h3>Antivirus</h3>
+                        <p>Kaspersky et autres solutions</p>
+                    </a>
+                </div>
+                <div class="category-card">
+                    <a href="services.html" style="text-decoration: none; color: inherit;">
+                        <div class="category-icon"><i class="fas fa-tools"></i></div>
+                        <h3>Installation & Maintenance</h3>
+                        <p>Réparation et dépannage</p>
+                    </a>
+                </div>
+                <div class="category-card">
+                    <a href="services.html" style="text-decoration: none; color: inherit;">
+                        <div class="category-icon"><i class="fas fa-wifi"></i></div>
+                        <h3>Zone WiFi</h3>
+                        <p>Connexion internet sur place</p>
+                    </a>
+                </div>
+                <div class="category-card">
+                    <a href="services.html" style="text-decoration: none; color: inherit;">
+                        <div class="category-icon"><i class="fas fa-cogs"></i></div>
+                        <h3>Service Après-Vente</h3>
+                        <p>Support technique continu</p>
+                    </a>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="services.html" class="btn btn-primary">Voir tous nos services <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aperçu Produits -->
+    <section class="products-section" id="produits">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Produits</h2>
+                <p class="section-subtitle">Découvrez notre sélection</p>
+            </div>
+
+            <!-- Grille produits (6 premiers produits) -->
+            <div class="products-grid" id="productsContainer">
+                <!-- Chargés par JavaScript -->
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="produits.html" class="btn btn-primary">Voir tous les produits <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos (aperçu) -->
+    <section class="about-section" id="apropos">
+        <div class="container">
+            <div class="section-title">
+                <h2>À propos</h2>
+                <p class="section-subtitle">Votre partenaire de confiance depuis 2018</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Notre Engagement</h3>
+                    <p>Depuis notre création, nous nous engageons à fournir des produits électroniques de qualité à des prix compétitifs, accompagnés d'un service client exceptionnel.</p>
+                    
+                    <div class="stats">
+                        <div class="stat-item"><div class="stat-number">2,500+</div><div class="stat-label">Clients</div></div>
+                        <div class="stat-item"><div class="stat-number">5+</div><div class="stat-label">Ans d'expérience</div></div>
+                        <div class="stat-item"><div class="stat-number">1,000+</div><div class="stat-label">Produits vendus</div></div>
+                        <div class="stat-item"><div class="stat-number">99%</div><div class="stat-label">Satisfaction</div></div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="apropos.html" class="btn btn-primary">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Notre boutique">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages (aperçu) -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Témoignages</h2>
+                <p class="section-subtitle">Ce que disent nos clients</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Excellent service, produits de qualité et prix compétitifs. Je recommande !"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"><i class="fas fa-user"></i></div>
+                        <div class="author-info"><h4>Moussa T.</h4><p>Enseignant</p></div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">"Réparation rapide et professionnelle de mon ordinateur. Merci !"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"><i class="fas fa-user"></i></div>
+                        <div class="author-info"><h4>Fatouma N.</h4><p>Commerçante</p></div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"J'ai équipé toute ma famille ici. La qualité est au rendez-vous."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"><i class="fas fa-user"></i></div>
+                        <div class="author-info"><h4>Jean K.</h4><p>Fonctionnaire</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact (aperçu) -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact</h2>
+                <p class="section-subtitle">Venez nous voir ou contactez-nous</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-details">
+                            <h4>Adresse</h4>
+                            <p>Quartier Centre, Koudougou</p>
+                            <p>Burkina Faso</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div class="contact-details">
+                            <h4>Téléphone</h4>
+                            <p>+226 67 91 67 52</p>
+                            <p>+226 78 45 23 12</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>contact@digitalelectronique.bf</p>
+                            <p>firminjoyameogo74@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="contact.html" class="btn btn-primary">Nous contacter <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Envoyez-nous un message</h3>
+                        <form id="contactForm">
+                        <div class="form-row">
+                            <input type="text" name="nom" placeholder="Votre nom" required>
+                            <input type="text" name="prenom" placeholder="Votre prénom" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <input type="email" name="email" placeholder="Votre email" required>
+                            <input type="tel" name="telephone" placeholder="Votre téléphone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select name="sujet" required>
+                                <option value="">Sujet du message</option>
+                                <option value="achat">Demande d'achat</option>
+                                <option value="info">Information</option>
+                                <option value="reparation">Réparation</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Votre message..." rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-paper-plane"></i> Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Google Maps -->
+            <div class="map-container">
+                <h3>Notre localisation</h3>
+                <div id="googleMap"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-laptop-code"></i>
+                        <span>DIGITAL <span class="logo-highlight">ELECTRONIQUE</span></span>
+                    </div>
+                    <p>Votre boutique d'électronique de confiance à Koudougou.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Liens rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="produits.html"><i class="fas fa-chevron-right"></i> Produits</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Vente smartphones</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Vente ordinateurs</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Pièces détachées</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Maintenance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Paiement</h4>
+                    <div class="payment-methods">
+                        <div class="payment-method"><i class="fas fa-money-bill-wave"></i><span>Espèces</span></div>
+                        <div class="payment-method"><i class="fab fa-orange"></i><span>Orange Money</span></div>
+                        <div class="payment-method"><i class="fas fa-mobile-alt"></i><span>Moov Money</span></div>
+                        <div class="payment-method"><i class="fas fa-university"></i><span>Virement</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2018-<span id="currentYear"></span> DIGITAL ELECTRONIQUE. Tous droits réservés.</p>
+                </div>
+                <div class="legal-links">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Confidentialité</a>
+                    <a href="#">CGV</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal" id="purchaseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Finaliser votre commande</h2>
+                <span class="close-modal" id="closeModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="purchaseForm">
+                    <div class="form-group">
+                        <label>Produit</label>
+                        <input type="text" id="selectedProduct" readonly>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nom *</label>
+                            <input type="text" id="clientName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Prénom *</label>
+                            <input type="text" id="clientFirstName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="clientEmail">
+                        </div>
+                        <div class="form-group">
+                            <label>Téléphone *</label>
+                            <input type="tel" id="clientPhone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Paiement *</label>
+                        <select id="paymentMethod" required>
+                            <option value="">Choisissez</option>
+                            <option value="orange">Orange Money</option>
+                            <option value="moov">Moov Money</option>
+                            <option value="especes">Espèces</option>
+                            <option value="virement">Virement</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Adresse de livraison</label>
+                        <textarea id="deliveryAddress" rows="3" placeholder="Si applicable"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Message additionnel</label>
+                        <textarea id="additionalMessage" rows="3" placeholder="Informations supplémentaires..."></textarea>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fab fa-whatsapp"></i> Commander via WhatsApp
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="cancelPurchase">
+                            Annuler
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="detailsModal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2 id="detailsTitle">Détails du produit</h2>
+                <span class="close-modal" id="closeDetails">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="detailsContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/products-data.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Afficher seulement 6 produits sur l'accueil
+        document.addEventListener('DOMContentLoaded', function() {
+            // Surcharger la fonction displayProducts pour l'accueil
+            const originalDisplay = displayProducts;
+            displayProducts = function(products) {
+                // Ne montrer que les 6 premiers produits
+                const limitedProducts = products.slice(0, 6);
+                originalDisplay(limitedProducts);
+            };
+            
+            // Re-afficher les produits avec la limite
+            if (typeof productsData !== 'undefined') {
+                displayProducts(productsData);
+            }
+        });
+    </script>
+</body>
+</html>
